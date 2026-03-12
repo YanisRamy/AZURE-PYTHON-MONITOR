@@ -13,6 +13,12 @@ This project demonstrates Python scripting skills applied to cloud infrastructur
 
 ---
 
+## Architecture Diagram
+
+![Architecture Diagram](screenshots/azure-monitor-diagram.svg)
+
+---
+
 ## Features
 
 - Scans all Azure Resource Groups with their status and location
@@ -28,9 +34,6 @@ This project demonstrates Python scripting skills applied to cloud infrastructur
 
 ### Monitor running - Resource Groups and VM scan
 ![Monitor running](screenshots/01-monitor-running.png)
-
-### AI Recommendations and final report
-![AI Report](screenshots/02-ai-report.png)
 
 ---
 
@@ -57,7 +60,7 @@ AZURE-PYTHON-MONITOR/
 ├── .gitignore
 ├── requirements.txt    # Python dependencies
 ├── reports/            # Generated JSON reports (auto-created)
-├── screenshots/        # Project screenshots
+├── screenshots/        # Project screenshots and diagrams
 └── README.md
 ```
 
@@ -166,7 +169,7 @@ Report saved: reports/azure_report_20260312_020226.json
 
 ---
 
-## Azure Infrastructure Monitored
+## Azure Resources Monitored
 
 | Resource Type | Description |
 |---------------|-------------|

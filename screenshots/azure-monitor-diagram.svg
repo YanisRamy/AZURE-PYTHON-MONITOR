@@ -1,0 +1,121 @@
+<svg viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', sans-serif">
+  <!-- Background -->
+  <rect width="900" height="520" fill="#0a0f1e"/>
+
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff" letter-spacing="1">Azure Resource Monitor</text>
+  <text x="450" y="62" text-anchor="middle" font-size="13" fill="#6b7a9e">Python Automation with AI - Architecture Diagram</text>
+
+  <!-- Arrow definitions -->
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#0078d4"/>
+    </marker>
+    <marker id="arrGreen" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#4ade80"/>
+    </marker>
+    <marker id="arrYellow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#f59e0b"/>
+    </marker>
+  </defs>
+
+  <!-- STEP 1 - Python Script -->
+  <rect x="30" y="110" width="160" height="120" rx="12" fill="#161b27" stroke="#3776ab" stroke-width="2"/>
+  <rect x="30" y="110" width="160" height="6" rx="12" fill="#3776ab"/>
+  <text x="110" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">monitor.py</text>
+  <text x="110" y="158" text-anchor="middle" font-size="11" fill="#3776ab">Python 3.8+</text>
+  <text x="110" y="178" text-anchor="middle" font-size="10" fill="#6b7a9e">azure-identity</text>
+  <text x="110" y="194" text-anchor="middle" font-size="10" fill="#6b7a9e">azure-mgmt-resource</text>
+  <text x="110" y="210" text-anchor="middle" font-size="10" fill="#6b7a9e">azure-mgmt-compute</text>
+
+  <!-- Arrow 1 to Azure -->
+  <line x1="190" y1="170" x2="240" y2="170" stroke="#0078d4" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="215" y="163" text-anchor="middle" font-size="9" fill="#0078d4">SDK calls</text>
+
+  <!-- Azure Cloud box -->
+  <rect x="240" y="88" width="420" height="340" rx="14" fill="#0d1526" stroke="#0078d4" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <rect x="240" y="76" width="130" height="24" rx="4" fill="#0078d4"/>
+  <text x="305" y="92" text-anchor="middle" font-size="12" font-weight="600" fill="#ffffff">Microsoft Azure</text>
+
+  <!-- Auth box -->
+  <rect x="260" y="105" width="150" height="60" rx="10" fill="#1a2540" stroke="#0078d4" stroke-width="1.5"/>
+  <text x="335" y="130" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff">AzureCliCredential</text>
+  <text x="335" y="148" text-anchor="middle" font-size="10" fill="#6b7a9e">az login authentication</text>
+
+  <!-- Resource Groups box -->
+  <rect x="260" y="185" width="150" height="65" rx="10" fill="#1a2540" stroke="#4ade80" stroke-width="1.5"/>
+  <rect x="260" y="185" width="150" height="6" rx="10" fill="#4ade80"/>
+  <text x="335" y="210" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff">Resource Groups</text>
+  <text x="335" y="227" text-anchor="middle" font-size="10" fill="#6b7a9e">Name, Location</text>
+  <text x="335" y="242" text-anchor="middle" font-size="10" fill="#6b7a9e">Provisioning State</text>
+
+  <!-- VMs box -->
+  <rect x="260" y="268" width="150" height="65" rx="10" fill="#1a2540" stroke="#f59e0b" stroke-width="1.5"/>
+  <rect x="260" y="268" width="150" height="6" rx="10" fill="#f59e0b"/>
+  <text x="335" y="293" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff">Virtual Machines</text>
+  <text x="335" y="310" text-anchor="middle" font-size="10" fill="#6b7a9e">Name, Size, Status</text>
+  <text x="335" y="325" text-anchor="middle" font-size="10" fill="#6b7a9e">Running / Stopped</text>
+
+  <!-- All Resources box -->
+  <rect x="260" y="351" width="150" height="60" rx="10" fill="#1a2540" stroke="#a78bfa" stroke-width="1.5"/>
+  <rect x="260" y="351" width="150" height="6" rx="10" fill="#a78bfa"/>
+  <text x="335" y="376" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff">All Resources</text>
+  <text x="335" y="393" text-anchor="middle" font-size="10" fill="#6b7a9e">Full inventory</text>
+  <text x="335" y="408" text-anchor="middle" font-size="10" fill="#6b7a9e">Grouped by type</text>
+
+  <!-- Arrows from Azure boxes to AI -->
+  <line x1="410" y1="217" x2="460" y2="217" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrGreen)"/>
+  <line x1="410" y1="300" x2="460" y2="300" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arrYellow)"/>
+  <line x1="410" y1="381" x2="460" y2="335" stroke="#a78bfa" stroke-width="1.5"/>
+
+  <!-- AI Analysis box -->
+  <rect x="460" y="185" width="170" height="200" rx="12" fill="#1a2540" stroke="#f59e0b" stroke-width="2"/>
+  <rect x="460" y="185" width="170" height="6" rx="12" fill="#f59e0b"/>
+  <text x="545" y="212" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">AI Analysis</text>
+  <text x="545" y="232" text-anchor="middle" font-size="10" fill="#6b7a9e">Anomaly detection</text>
+  <text x="545" y="250" text-anchor="middle" font-size="10" fill="#4ade80">- No VMs = containerized</text>
+  <text x="545" y="267" text-anchor="middle" font-size="10" fill="#f59e0b">- Stopped VMs = cost alert</text>
+  <text x="545" y="284" text-anchor="middle" font-size="10" fill="#a78bfa">- Many RGs = governance</text>
+  <text x="545" y="305" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff">Recommendations</text>
+  <text x="545" y="322" text-anchor="middle" font-size="10" fill="#6b7a9e">Cost Management</text>
+  <text x="545" y="339" text-anchor="middle" font-size="10" fill="#6b7a9e">Terraform IaC</text>
+  <text x="545" y="356" text-anchor="middle" font-size="10" fill="#6b7a9e">Azure Monitor</text>
+  <text x="545" y="373" text-anchor="middle" font-size="10" fill="#6b7a9e">Tagging strategy</text>
+
+  <!-- Arrow AI to Report -->
+  <line x1="630" y1="285" x2="680" y2="285" stroke="#0078d4" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Report box -->
+  <rect x="680" y="220" width="150" height="130" rx="12" fill="#1a2540" stroke="#4ade80" stroke-width="2"/>
+  <rect x="680" y="220" width="150" height="6" rx="12" fill="#4ade80"/>
+  <text x="755" y="248" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">JSON Report</text>
+  <text x="755" y="268" text-anchor="middle" font-size="10" fill="#6b7a9e">azure_report_</text>
+  <text x="755" y="284" text-anchor="middle" font-size="10" fill="#6b7a9e">YYYYMMDD.json</text>
+  <text x="755" y="304" text-anchor="middle" font-size="10" fill="#4ade80">timestamp</text>
+  <text x="755" y="320" text-anchor="middle" font-size="10" fill="#4ade80">summary</text>
+  <text x="755" y="336" text-anchor="middle" font-size="10" fill="#4ade80">recommendations</text>
+
+  <!-- Terminal output box -->
+  <rect x="30" y="270" width="160" height="130" rx="12" fill="#161b27" stroke="#238636" stroke-width="1.5"/>
+  <rect x="30" y="270" width="160" height="6" rx="12" fill="#238636"/>
+  <text x="110" y="297" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">Terminal Output</text>
+  <text x="110" y="315" text-anchor="middle" font-size="10" fill="#4ade80">Color-coded results</text>
+  <text x="110" y="331" text-anchor="middle" font-size="10" fill="#6b7a9e">tabulate tables</text>
+  <text x="110" y="347" text-anchor="middle" font-size="10" fill="#f59e0b">Alerts in red</text>
+  <text x="110" y="363" text-anchor="middle" font-size="10" fill="#6b7a9e">colorama library</text>
+  <text x="110" y="379" text-anchor="middle" font-size="10" fill="#6b7a9e">Real-time display</text>
+
+  <!-- Arrow script to terminal -->
+  <line x1="110" y1="230" x2="110" y2="270" stroke="#238636" stroke-width="1.5" marker-end="url(#arrGreen)"/>
+
+  <!-- .env box -->
+  <rect x="30" y="430" width="160" height="60" rx="10" fill="#161b27" stroke="#6b7a9e" stroke-width="1.5"/>
+  <text x="110" y="455" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff">.env Config</text>
+  <text x="110" y="472" text-anchor="middle" font-size="10" fill="#6b7a9e">SUBSCRIPTION_ID</text>
+  <text x="110" y="486" text-anchor="middle" font-size="10" fill="#6b7a9e">TENANT_ID</text>
+
+  <!-- Arrow env to script -->
+  <line x1="190" y1="460" x2="230" y2="460" stroke="#6b7a9e" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="230" y1="460" x2="230" y2="170" stroke="#6b7a9e" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="230" y1="170" x2="190" y2="170" stroke="#6b7a9e" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+</svg>
