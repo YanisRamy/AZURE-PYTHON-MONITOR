@@ -1,15 +1,16 @@
-# Azure Resource Monitor - Python Automation with AI
+# Azure Resource Monitor - Python Automation with Claude AI
 
 ![Python](https://img.shields.io/badge/Python-3.8+-3776AB)
 ![Azure](https://img.shields.io/badge/Cloud-Azure-0078D4)
+![Claude AI](https://img.shields.io/badge/AI-Claude_Anthropic-D97706)
 ![Azure SDK](https://img.shields.io/badge/Azure_SDK-Python-0078D4)
 ![Automation](https://img.shields.io/badge/Automation-DevOps-238636)
 
 ## Overview
 
-A Python automation script that monitors Azure cloud resources in real-time, detects anomalies, generates AI-powered recommendations and produces JSON reports automatically.
+A Python automation script that monitors Azure cloud resources in real-time, then sends the infrastructure data to **Claude AI (Anthropic)** which generates expert recommendations in French, detects anomalies and evaluates the risk level automatically.
 
-This project demonstrates Python scripting skills applied to cloud infrastructure management on Microsoft Azure.
+This project demonstrates Python scripting skills applied to cloud infrastructure management on Microsoft Azure, combined with real AI integration.
 
 ---
 
@@ -19,21 +20,23 @@ This project demonstrates Python scripting skills applied to cloud infrastructur
 
 ---
 
-## Features
+## How it works
 
-- Scans all Azure Resource Groups with their status and location
-- Detects and lists all Virtual Machines with size and running status
-- Inventories all Azure resources grouped by type
-- Generates intelligent recommendations based on infrastructure analysis
-- Exports a detailed JSON report with timestamp
-- Color-coded terminal output for better readability
+1. The script connects to Azure using Azure CLI Credential
+2. It scans all Resource Groups, Virtual Machines and resources
+3. The infrastructure data is sent to Claude AI via the Anthropic API
+4. Claude AI returns a professional assessment, 5 recommendations and a risk level
+5. A JSON report is saved automatically with timestamp
 
 ---
 
 ## Screenshots
 
-### Monitor running - Resource Groups and VM scan
+### Script running - Azure scan in progress
 ![Monitor running](screenshots/01-monitor-running.png)
+
+### Claude AI analysis - Real AI recommendations
+![Claude AI Analysis](screenshots/02-claude-ai-analysis.png)
 
 ---
 
@@ -43,6 +46,7 @@ This project demonstrates Python scripting skills applied to cloud infrastructur
 |-----------|-----------|
 | Language | Python 3.8+ |
 | Cloud SDK | Azure SDK for Python |
+| AI Engine | Claude AI - Anthropic API |
 | Authentication | Azure CLI Credential |
 | Resource Management | azure-mgmt-resource |
 | Compute Management | azure-mgmt-compute |
@@ -56,7 +60,7 @@ This project demonstrates Python scripting skills applied to cloud infrastructur
 ```
 AZURE-PYTHON-MONITOR/
 ├── monitor.py          # Main monitoring script
-├── .env                # Azure credentials (not committed)
+├── .env                # Azure + Anthropic credentials (not committed)
 ├── .gitignore
 ├── requirements.txt    # Python dependencies
 ├── reports/            # Generated JSON reports (auto-created)
@@ -73,6 +77,7 @@ AZURE-PYTHON-MONITOR/
 - Python 3.8+
 - Azure CLI installed and logged in
 - An active Azure subscription
+- An Anthropic API key (https://console.anthropic.com)
 
 ### 1. Clone the repo
 ```bash
@@ -92,15 +97,12 @@ pip install -r requirements.txt
 ```
 
 ### 4. Configure environment
-```bash
-cp .env.example .env
-```
 
-Edit `.env` with your Azure credentials:
+Create a `.env` file with your credentials:
 ```
 AZURE_SUBSCRIPTION_ID=your-subscription-id
 AZURE_TENANT_ID=your-tenant-id
-RESOURCE_GROUP=your-resource-group
+ANTHROPIC_API_KEY=your-anthropic-api-key
 ```
 
 ### 5. Login to Azure and run
@@ -111,36 +113,24 @@ python3 monitor.py
 
 ---
 
-## Sample Output
+## Claude AI Output Example
 ```
-============================================================
-   AZURE RESOURCE MONITOR - Python Automation with AI
-============================================================
-   Subscription: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-   Time: 2026-03-12 02:02:23
-============================================================
-Connecting to Azure...
+ASSESSMENT:
+L'infrastructure Azure est actuellement vide avec seulement un groupe
+de ressources "IntroAzureRG" cree dans la region East US, sans aucune
+ressource deployee. Cette situation suggere soit un environnement
+nouvellement cree, soit un nettoyage recent des ressources.
 
-Scanning Resource Groups...
-Found 1 resource group(s)
+RECOMMENDATIONS:
+1. Implementer Azure Policy pour enforcer les standards de nommage
+2. Configurer Azure Cost Management avec alertes a 50%, 75% et 90%
+3. Activer Azure Security Center (Microsoft Defender for Cloud)
+4. Etablir une strategie RBAC avec le principe du moindre privilege
+5. Planifier l'architecture reseau (VNet, sous-reseaux, NSG)
 
-Scanning Virtual Machines...
-No virtual machines found.
-
-Scanning all Azure resources...
-Found 5 total resource(s)
-
-Running AI analysis...
-AI Recommendations:
-  1. No VMs detected - infrastructure is fully containerized (good practice)
-  2. Enable Azure Cost Management alerts to monitor spending
-  3. Use Terraform to manage all resources as Infrastructure as Code
-  4. Enable Azure Monitor and set up alerts for critical resources
-
-Report saved: reports/azure_report_20260312_020226.json
-============================================================
-   MONITORING COMPLETE
-============================================================
+RISK LEVEL: LOW
+JUSTIFICATION: Le niveau de risque est faible car aucune ressource
+n'est deployee, eliminant ainsi les risques de securite et de couts.
 ```
 
 ---
@@ -148,34 +138,17 @@ Report saved: reports/azure_report_20260312_020226.json
 ## Generated Report Format
 ```json
 {
-  "timestamp": "2026-03-12T02:02:26",
+  "timestamp": "2026-03-12T02:25:49",
   "subscription_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "summary": {
     "resource_groups": 1,
     "virtual_machines": 0,
-    "total_resources": 5,
-    "resource_types": {
-      "virtualMachines": 2,
-      "storageAccounts": 1
-    }
+    "total_resources": 0
   },
-  "recommendations": [
-    "No VMs detected - infrastructure is fully containerized",
-    "Enable Azure Cost Management alerts"
-  ],
+  "ai_analysis": "ASSESSMENT:\n...\nRECOMMENDATIONS:\n...\nRISK LEVEL: LOW",
   "status": "completed"
 }
 ```
-
----
-
-## Azure Resources Monitored
-
-| Resource Type | Description |
-|---------------|-------------|
-| Resource Groups | Lists all groups with location and status |
-| Virtual Machines | Detects running, stopped and deallocated VMs |
-| All Resources | Full inventory grouped by resource type |
 
 ---
 
